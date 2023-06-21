@@ -1,14 +1,19 @@
 
-// const express = require('express');
-// console.log("This server is a Express Server!");
 import express from 'express'
 const app = express()
-const port = 3000
 
+//http://192.168.1.106:3000
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  console.log('Hello World!',new Date());
+  res.send('Hello World!'+ new Date());
+})
+app.get('/profile', (req, res) => {
+  console.log('This is Profile!',new Date());
+  res.send('This is Profile!'+ new Date());
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+  console.log(`Example server listening on port ${PORT}`)
 })
