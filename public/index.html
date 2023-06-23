@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Weather app</title>
+</head>
+
+<body>
+    <h1>My Weather app</h1>
+
+    <form onsubmit="getWeather(); return false">
+
+        <label for="cityName">city:</label>
+        <input type="text" name="cityName" id="cityName" placeholder="enter your city name">
+
+        <br>
+
+        <button type="submit">Get Weather</button>
+
+
+    </form>
+    <div id="result">
+
+    </div>
+    <div id="result-2">
+
+    </div>
+    <div id="result-3">
+
+    </div>
+    <div id="result-4">
+
+    </div>
+    <div id="result-5">
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module">
+
+        let name = "alice"
+
+        window.getWeather = function () {
+
+            let cityName = document.querySelector("#cityName").value;
+
+            axios.get(`http://localhost:3000/weather/${CityName}`)
+                .then(function (response) {
+                    // handle success
+                    console.log(response.data);
+                    document.querySelector("#result").innerHTML = `City : ${response.data. City}`
+                    document.querySelector("#result-2").innerHTML = `current temperature is : ${response.data.TempInC}°C`
+                    document.querySelector("#result-3").innerHTML = `Humidity is : ${response.data. Humidity}`
+                    document.querySelector("#result-4").innerHTML = `Maximum Temperature is : ${response.data. MaxTemp}°C`
+                    document.querySelector("#result-5").innerHTML = `Lowest temperature is : ${response.data. LowTemp}°C`
+
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error.data);
+                    document.querySelector("#result").innerHTML = "error in getting weather data"
+                })
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>
